@@ -20,6 +20,7 @@ gem 'rake'
 gem 'sass'
 gem 'erubi', '~> 1.6'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'activerecord-import'
 gem 'sqlite3'
 
 # Test requirements
