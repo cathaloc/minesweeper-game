@@ -6,6 +6,19 @@ module Minesweeper
     register Padrino::Helpers
     enable :sessions
 
+    before do
+      content_type 'application/json'
+    end
+
+    get '/' do
+      redirect :game
+    end
+
+    get :game do
+      content_type 'text/html'
+      render 'html/game'
+    end
+
     ##
     # Caching support.
     #
