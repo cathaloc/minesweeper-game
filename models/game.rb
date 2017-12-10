@@ -8,7 +8,8 @@ class Game < ActiveRecord::Base
   # Validations
   #
   validates_presence_of :name
-  # TODO validate that it has all tiles
+  validates_inclusion_of :x_size, {in: 1..20}
+  validates_inclusion_of :y_size, {in: 1..20}
 
   ##
   # Hooks
@@ -17,11 +18,7 @@ class Game < ActiveRecord::Base
 
   def create_tiles
     # TODO Make configurable
-    x_size = 5
-    y_size = 5
-    mine_count = 5
-
-    tiles = initialize_tile_objects(x_size, y_size)
+    tiles = initialize_tile_objects
     set_random_tiles_as_mines(tiles, mine_count)
     
     Tile.import tiles
@@ -31,7 +28,7 @@ class Game < ActiveRecord::Base
   private
 
 
-  def initialize_tile_objects(x_size, y_size)
+  def initialize_tile_objects
     tiles = []
     x_size.times do |x|
       y_size.times do |y|

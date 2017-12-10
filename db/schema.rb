@@ -14,7 +14,9 @@ ActiveRecord::Schema.define(version: 2) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.integer "x_size", default: 5
+    t.integer "y_size", default: 5
+    t.integer "mine_count", default: 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -14,9 +14,9 @@
   <div class="box game-canvas">
     <table class="minefield">
       <tbody>
-        <% 5.times do |y| %>
+        <% @game.y_size.times do |y| %>
           <tr>
-            <% 5.times do |x| %>
+            <% @game.x_size.times do |x| %>
               <td is="minefield-tile" x="<%= x %>" y="<%= y %>"></td>
             <% end %>
           </tr>

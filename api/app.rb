@@ -5,6 +5,12 @@ module Minesweeper
     enable :sessions
 
     set :protect_from_csrf, false
+
+    # All API endpoints will serve JSON.
+    before do
+      content_type 'application/json'
+    end
+
     ##
     # Caching support.
     #
