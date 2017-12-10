@@ -9,34 +9,90 @@ Vue.component('minefield-tile', {
 
   methods: {
     clickedTile() {
-      axios.post('/api/games/dig_tile', {
-        x: this.x,
-        y: this.y
-      }).then((response) => {
-        this.is_dug = response.data.tile.is_dug;
-        this.is_mine = response.data.tile.is_mine;
-        this.nearby_mine_count = response.data.tile.nearby_mine_count;
-      }).catch(error =>{
-        console.error("Tile doesn't exist. This isn't good.")
-        console.error(error)
-      });
+      this.$emit('clicked-tile', this);
     },
+
+    tile_state() {
+      if(this.$store.state.tiles[this.x] == undefined)
+        return undefined;
+
+      return this.$store.state.tiles[this.x][this.y];
+    }
   },
 
-  data() {
-    return {
-      is_dug: false,
-      is_mine: null,
-      nearby_mine_count: null
+  computed: {
+    is_dug () {
+      let tile_state = this.tile_state();
+      return tile_state ? tile_state.is_dug : undefined;
+    },
+    is_mine () {
+      let tile_state = this.tile_state();
+      return tile_state ? tile_state.is_mine : undefined;
+    },
+    nearby_mine_count () {
+      let tile_state = this.tile_state();
+      return tile_state ? tile_state.nearby_mine_count : undefined;
+    }
+  }
+
+});
+
+const store = new Vuex.Store({
+  state: {
+    tiles: {}
+  },
+
+  mutations: {
+    setTiles(state, tiles) {
+      state.tiles = tiles;
+    },
+
+    updateTiles(state, tiles) {
+      tiles.forEach((t) => {
+        state.tiles[t.x][t.y] = t;
+      });
+    }
+  },
+
+  actions: {
+    initialize (context) {
+      axios.get('/api/games/1/tiles').then(response => {
+        var tiles = response.data.tiles;
+        var tiles_hash = {}
+        tiles.forEach((t) => {
+          tiles_hash[t.x] = tiles_hash[t.x] ? tiles_hash[t.x] : {};
+          tiles_hash[t.x][t.y] = t;
+        });
+
+        context.commit('setTiles', tiles_hash);
+      });
     }
   }
 });
 
 new Vue({
   el: '.game-canvas',
+  store,
+
+  mounted() {
+    this.initializeDataStore();
+  },
 
   methods: {
-    digTile(x, y) {
+    initializeDataStore() {
+      store.dispatch('initialize');
+    },
+
+    digTile(tile) {
+      axios.post('/api/games/dig_tile', {
+        x: tile.x,
+        y: tile.y
+      }).then((response) => {
+        store.commit('updateTiles', response.data.tiles);
+      }).catch(error =>{
+        console.error("Tile doesn't exist. This isn't good.")
+        console.error(error)
+      });
     }
   }
 });
