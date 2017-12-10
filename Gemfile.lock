@@ -63,7 +63,11 @@ GEM
       mime-types (< 3)
       padrino-core (= 0.14.1.1)
     padrino-support (0.14.1.1)
+    rabl (0.13.1)
+      activesupport (>= 2.3.14)
     rack (2.0.3)
+    rack-parser (0.7.0)
+      rack
     rack-protection (2.0.0)
       rack
     rake (12.3.0)
@@ -95,6 +99,8 @@ DEPENDENCIES
   activerecord-import
   erubi (~> 1.6)
   padrino (= 0.14.1.1)
+  rabl
+  rack-parser
   rake
   sass
   sqlite3

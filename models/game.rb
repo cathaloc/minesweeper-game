@@ -2,7 +2,7 @@ class Game < ActiveRecord::Base
   ##
   # Associations
   #
-  has_many :tiles
+  has_many :tiles, dependent: :destroy
 
   ##
   # Validations
@@ -17,9 +17,9 @@ class Game < ActiveRecord::Base
 
   def create_tiles
     # TODO Make configurable
-    x_size = 10
-    y_size = 10
-    mine_count = 10
+    x_size = 5
+    y_size = 5
+    mine_count = 5
 
     tiles = initialize_tile_objects(x_size, y_size)
     set_random_tiles_as_mines(tiles, mine_count)

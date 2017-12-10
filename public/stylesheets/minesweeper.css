@@ -6,12 +6,21 @@
 .minefield {
   border-collapse: separate;
   border-spacing: 5px;
+  display: table;
   table-layout: fixed;
   width: 100%;
   height: 100%; }
   .minefield .minefield-tile {
     background-color: yellow;
-    border-radius: 10px; }
+    border-radius: 10px;
+    text-align: center;
+    font-size: 50px;
+    line-height: 0;
+    vertical-align: middle; }
+    .minefield .minefield-tile.dug {
+      background-color: green; }
+      .minefield .minefield-tile.dug.mine {
+        background-color: red; }
     .minefield .minefield-tile:hover {
       filter: brightness(90%); }
     .minefield .minefield-tile:active {

@@ -9,6 +9,7 @@
 .minefield{
   border-collapse: separate;
   border-spacing: 5px;
+  display: table;
   table-layout: fixed;
   width: 100%;
   height: 100%;
@@ -16,6 +17,15 @@
   .minefield-tile{
     background-color: yellow;
     border-radius: 10px;
+    text-align: center;
+    font-size: 50px;
+    line-height: 0;
+    vertical-align: middle;
+
+    &.dug{
+      background-color: green;
+      &.mine{ background-color: red; }
+    }
 
     &:hover{
       filter: brightness(90%);

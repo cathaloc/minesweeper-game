@@ -15,6 +15,7 @@ source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
+gem 'rack-parser'
 
 # Component requirements
 gem 'sass'
@@ -22,7 +23,7 @@ gem 'erubi', '~> 1.6'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'activerecord-import'
 gem 'sqlite3'
-
+gem 'rabl'
 # Test requirements
 
 # Padrino Stable Gem

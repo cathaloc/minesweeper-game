@@ -5,6 +5,7 @@ class CreateTiles < ActiveRecord::Migration[4.2]
       t.integer :y
       t.integer :game_id
       t.boolean :is_mine, default: false
+      t.boolean :is_dug, default: false
     end
   end
 

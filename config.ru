@@ -7,3 +7,7 @@
 require File.expand_path("../config/boot.rb", __FILE__)
 
 run Padrino.application
+
+use Rack::Parser, :content_types => {
+  'application/json'  => Proc.new { |body| ::MultiJson.decode body }
+}
