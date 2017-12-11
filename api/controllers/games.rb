@@ -1,7 +1,6 @@
 Minesweeper::Api.controllers :games do
   
   post :index do
-    logger.info( params )
     @game = Game.create(params)
 
     status 400 unless @game.valid?

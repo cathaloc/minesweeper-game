@@ -16,7 +16,6 @@ module Minesweeper
 
         tile_to_dig = tiles.pop
         nearby_mines = tile_to_dig.dig
-        logger.info(nearby_mines)
 
         if nearby_mines == 0 && !tile_to_dig.is_mine?
           nearby_tiles = tile_to_dig.adjacent_tiles.where(is_dug: false)

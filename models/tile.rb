@@ -13,10 +13,7 @@ class Tile < ActiveRecord::Base
   # Instance Methods
   #
   def dig
-    logger.info( "Digging tile")
-    logger.info( self.inspect)
     self.update_column(:is_dug, true)
-    logger.info( self.inspect)
     nearby_mine_count
   end
 
