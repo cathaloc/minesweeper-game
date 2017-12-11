@@ -6,5 +6,5 @@ vendor/gems/*
 .sass-cache/*
 db/*.db
 .*.sw*
-.bundle/
+.bundle/*
 

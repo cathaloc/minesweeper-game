@@ -9,6 +9,7 @@ ActiveRecord::Base.configurations[:production] = {
     :encoding  => 'utf8',
     :database  => 'minesweeper',
     :pool      => 5,
+    :socket    => '/var/run/postgresql/.s.PGSQL.5432'
 }
 
 ActiveRecord::Base.configurations[:test] = {
