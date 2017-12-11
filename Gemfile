@@ -22,11 +22,11 @@ gem 'sass'
 gem 'erubi', '~> 1.6'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'activerecord-import'
-gem 'rabl'
 # Test requirements
 
 # Padrino Stable Gem
 gem 'padrino', '0.14.1.1'
+gem 'rabl'
 
 
 group :development do
