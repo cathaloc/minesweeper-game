@@ -7,7 +7,7 @@ module Minesweeper
     enable :sessions
 
     get '/' do
-      redirect :game
+      redirect '/create_game'
     end
 
     ##

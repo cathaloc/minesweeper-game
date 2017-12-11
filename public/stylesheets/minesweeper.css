@@ -24,4 +24,8 @@
     .minefield .minefield-tile:active {
       filter: brightness(80%); }
 
+.game-creation-container {
+  max-width: 400px;
+  margin: 20px auto; }
+
 /*# sourceMappingURL=minesweeper.css.map */

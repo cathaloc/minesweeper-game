@@ -1,5 +1,14 @@
 Minesweeper::Api.controllers :games do
   
+  post :index do
+    logger.info( params )
+    @game = Game.create(params)
+
+    status 400 unless @game.valid?
+
+    render 'games/game'
+  end
+
   get :tiles, map: '/games/:game_id/tiles' do
     @game = Game.find_by_id params[:game_id]
     return if @game.blank?
