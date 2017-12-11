@@ -1,7 +1,7 @@
 Minesweeper::Api.controllers :games do
   
   get :tiles, map: '/games/:game_id/tiles' do
-    @game = Game.first # TODO use id
+    @game = Game.find_by_id params[:game_id]
     return if @game.blank?
 
     @tiles = @game.tiles
@@ -9,20 +9,18 @@ Minesweeper::Api.controllers :games do
     render 'tiles/tiles'
   end
 
-  post :dig_tile do
+  post :dig_tile, map: '/games/:game_id/dig_tile' do
     return unless params[:x].present?
     return unless params[:y].present?
 
-    game = Game.first
+    @game = Game.find_by_id params[:game_id]
+    return if @game.blank?
 
-    @tiles = game.tiles.where({
-      x: params[:x], 
-      y: params[:y]
-    })
+    tile_to_dig = Tile.where(game: @game, x: params[:x], y: params[:y]).first
+    return if tile_to_dig.blank?
 
-    return if @tiles.blank?
+    @tiles = dig_tile(tile_to_dig)
 
-    @tiles.first.dig
     render 'tiles/tiles'
   end  
 

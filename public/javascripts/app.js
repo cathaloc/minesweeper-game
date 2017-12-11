@@ -39,6 +39,7 @@ Vue.component('minefield-tile', {
 
 const store = new Vuex.Store({
   state: {
+    game_id: window.location.href.substr(window.location.href.lastIndexOf('/') + 1),
     tiles: {}
   },
 
@@ -56,7 +57,7 @@ const store = new Vuex.Store({
 
   actions: {
     initialize (context) {
-      axios.get('/api/games/1/tiles').then(response => {
+      axios.get('/api/games/' + this.state.game_id + '/tiles').then(response => {
         var tiles = response.data.tiles;
         var tiles_hash = {}
         tiles.forEach((t) => {
@@ -84,7 +85,7 @@ new Vue({
     },
 
     digTile(tile) {
-      axios.post('/api/games/dig_tile', {
+      axios.post('/api/games/' + this.$store.state.game_id + '/dig_tile', {
         x: tile.x,
         y: tile.y
       }).then((response) => {
