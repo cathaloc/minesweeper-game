@@ -22,12 +22,20 @@ gem 'sass'
 gem 'erubi', '~> 1.6'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'activerecord-import'
-gem 'sqlite3'
 gem 'rabl'
 # Test requirements
 
 # Padrino Stable Gem
 gem 'padrino', '0.14.1.1'
+
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
