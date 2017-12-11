@@ -7,9 +7,12 @@ ActiveRecord::Base.configurations[:development] = {
 ActiveRecord::Base.configurations[:production] = {
     :adapter   => 'postgresql',
     :encoding  => 'utf8',
-    :database  => 'minesweeper',
+    :database  => 'dsi93jnoiau8p',
+    :user      => 'ldpyvejnrcwwsr',
+    :password  => 'd07ee90ca8e26c53d23f5bcad67c8d16122f1ac4626c202b15ca4d8be3c53f68',
+    :host      => 'ec2-54-83-26-65.compute-1.amazonaws.com',
     :pool      => 5,
-    :socket    => '/var/run/postgresql/.s.PGSQL.5432'
+    :port      => 5432
 }
 
 ActiveRecord::Base.configurations[:test] = {
