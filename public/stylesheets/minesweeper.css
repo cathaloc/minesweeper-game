@@ -14,14 +14,15 @@
     text-align: center;
     font-size: 30px;
     line-height: 0;
-    vertical-align: middle; }
+    vertical-align: middle;
+    cursor: default; }
     .minefield .minefield-tile.dug {
       background-color: green; }
       .minefield .minefield-tile.dug.mine {
         background-color: red; }
-    .minefield .minefield-tile:hover {
+    .minefield .minefield-tile:hover:not(.dug) {
       filter: brightness(90%); }
-    .minefield .minefield-tile:active {
+    .minefield .minefield-tile:active:not(.dug) {
       filter: brightness(80%); }
 
 .game-creation-container {

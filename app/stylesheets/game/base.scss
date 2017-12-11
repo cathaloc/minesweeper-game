@@ -17,6 +17,7 @@
     font-size: 30px;
     line-height: 0;
     vertical-align: middle;
+    cursor: default;
 
     &.dug{
       background-color: green;
@@ -24,11 +25,11 @@
     }
 
     &:hover{
-      filter: brightness(90%);
+      &:not(.dug){ filter: brightness(90%); }
     }
 
     &:active{
-      filter: brightness(80%);
+      &:not(.dug){ filter: brightness(80%);}
     }
   }
 }

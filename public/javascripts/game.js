@@ -85,6 +85,10 @@ new Vue({
     },
 
     digTile(tile) {
+      if(store.state.tiles[tile.x][tile.y].is_dug) {
+        return;
+      }
+
       axios.post('/api/games/' + this.$store.state.game_id + '/dig_tile', {
         x: tile.x,
         y: tile.y
