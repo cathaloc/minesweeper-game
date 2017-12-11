@@ -63,6 +63,7 @@ GEM
       mime-types (< 3)
       padrino-core (= 0.14.1.1)
     padrino-support (0.14.1.1)
+    pg (0.21.0)
     rabl (0.13.1)
       activesupport (>= 2.3.14)
     rack (2.0.3)
@@ -99,6 +100,7 @@ DEPENDENCIES
   activerecord-import
   erubi (~> 1.6)
   padrino (= 0.14.1.1)
+  pg
   rabl
   rack-parser
   rake
